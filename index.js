@@ -1,11 +1,11 @@
 var querystring = require('querystring');
 var https = require('https');
 
-var host = 'www.kobis.or.kr';
+
 var apiKey = '03247e3243346fde40e43e8f337a6a3f';
 var util = require('util');
 
-function performRequest(endpoint, method, data, success) {
+function performRequest(host, endpoint, method, data, success) {
   var dataString = JSON.stringify(data);
   var headers = {};
   
@@ -25,6 +25,7 @@ function performRequest(endpoint, method, data, success) {
     headers: headers
   };
 
+  console.log('REQ : ' + host + endpoint);
   var req = https.request(options, function(res) {
     res.setEncoding('utf-8');
 
@@ -38,8 +39,8 @@ function performRequest(endpoint, method, data, success) {
       console.log('* OK End');
 
       var responseObject = JSON.parse(responseString);
-      console.log(util.inspect(responseObject, {showHidden: false, depth: null}));
-      //console.log(JSON.stringify(responseObject, null, 2));
+      // console.log(util.inspect(responseObject, {showHidden: false, depth: null}));
+
       success(responseObject);
     });
   });
@@ -59,19 +60,6 @@ Date.prototype.yymmdd = function() {
   return [yr, !mm[1] && '0', mm, !dd[1] && '0', dd].join('');
 }
 
-function getDailyBoxOffice() {
-  var today = new Date();
-  console.log('today is ' + today.yymmdd());
-  performRequest('/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', 
-    'GET', 
-    {
-      key : apiKey,
-      targetDt : today.yymmdd()
-    }, function(data) {
-      console.log('Fetched ' + data);
-      prettify(data);
-  });
-}
 
 function prettify(data) {
   var overall = data.boxOfficeResult;
@@ -88,4 +76,53 @@ function prettify(data) {
   console.log("-------------------------");
 }
 
+function prettify2(data) {
+  var channel = data.channel;
+  console.log("-------------------------");
+  
+  console.log("Title : " + channel.title);
+  console.log("result : " + channel.result);
+  console.log("query string : " + channel.q);
+
+  var list = channel.item;
+  
+  for (var i=0; i < list.length; i++) {
+    console.log("Thumbnail : " + list[i].thumbnail[0].content);
+    console.log("Story : " + list[i].story[0].content);
+  }
+
+  console.log("-------------------------");
+}
+
+function getDailyBoxOffice() {
+  var host = 'www.kobis.or.kr';
+  var today = new Date();
+  console.log('today is ' + today.yymmdd());
+  performRequest(host, '/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', 
+    'GET', 
+    {
+      key : apiKey,
+      targetDt : today.yymmdd()
+    }, function(data) {
+      // console.log('Fetched ' + data);
+      prettify(data);
+  });
+}
+
+function getMovieInfoByName(name) {
+  var host = 'apis.daum.net';
+  var daumKey = '1897b74982e1e8f01c2848ebe4a94cce';
+  performRequest(host, '/contents/movie', 
+    'GET', 
+    {
+      apiKey : daumKey,
+      q : name,
+      output : 'json'
+    }, function(data) {
+      // console.log('Fetched ' + data);
+      prettify2(data);
+  });
+}
+
 getDailyBoxOffice();
+getMovieInfoByName('부산행');
