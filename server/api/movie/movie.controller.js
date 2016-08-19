@@ -66,13 +66,15 @@ export function index(req, res) {
   getmovie.getDailyBoxOffice().then(function(data) {
     console.log('inside then');
     getmovie.prettify(data);
-    return data;
-  });
+    //respondWithResult(data);
+    res.send(data);
+  })
+  .catch(handleError(res));
   
   // return getmovie.getDailyBoxOffice().
   //   .then(respondWithResult(res))
   //   .catch(handleError(res));
-}
+} 
 
 // Gets a single Movie from the DB
 export function show(req, res) {

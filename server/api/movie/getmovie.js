@@ -28,28 +28,82 @@ function performRequest(host, endpoint, method, data, success) {
   };
 
   console.log('REQ : ' + host + endpoint);
-  var req = https.request(options, function(res) {
-    res.setEncoding('utf-8');
 
-    var responseString = '';
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, function(res) {
+      res.setEncoding('utf-8');
 
-    res.on('data', function(data) {
-      responseString += data;
-    });
+      console.log('111');
+      var responseString = '';
+      if (res.statusCode < 200 || res.statusCode > 299) {
+       reject(new Error('Failed to load page, status code: ' + res.statusCode));
+      }
 
-    res.on('end', function() {
-      console.log('* OK End');
+      res.on('data', function(data) {
+        console.log('222');
+        responseString += data;
+      });
 
-      var responseObject = JSON.parse(responseString);
-      // console.log(util.inspect(responseObject, {showHidden: false, depth: null}));
+      res.on('end', function() {
+        console.log('* OK End');
 
-      success(responseObject);
-    });
+        var responseObject = JSON.parse(responseString);
+        // console.log(util.inspect(responseObject, {showHidden: false, depth: null}));
+
+        resolve(responseObject);
+      });
+    }); // end https.request
+    console.log('333');
+    req.on('error', (err) => reject(err));
+    req.write(dataString);
+    req.end();
+    console.log('444');
   });
-
-  req.write(dataString);
-  req.end();
 }
+
+// function performRequest(host, endpoint, method, data, success) {
+//   var dataString = JSON.stringify(data);
+//   var headers = {};
+  
+//   if (method == 'GET') {
+//     endpoint += '?' + querystring.stringify(data);
+//   }
+//   else {
+//     headers = {
+//       'Content-Type': 'application/json',
+//       'Content-Length': dataString.length
+//     };
+//   }
+//   var options = {
+//     host: host,
+//     path: endpoint,
+//     method: method,
+//     headers: headers
+//   };
+
+//   console.log('REQ : ' + host + endpoint);
+//   var req = https.request(options, function(res) {
+//     res.setEncoding('utf-8');
+
+//     var responseString = '';
+
+//     res.on('data', function(data) {
+//       responseString += data;
+//     });
+
+//     res.on('end', function() {
+//       console.log('* OK End');
+
+//       var responseObject = JSON.parse(responseString);
+//       // console.log(util.inspect(responseObject, {showHidden: false, depth: null}));
+
+//       success(responseObject);
+//     });
+//   });
+
+//   req.write(dataString);
+//   req.end();
+// }
 
 Date.prototype.yymmdd = function() {
   //var yr = this.getYear() - 100;
@@ -57,7 +111,7 @@ Date.prototype.yymmdd = function() {
   var mm = this.getMonth() + 1;
   var dd = this.getDate()-1;
 
-  console.log('year : ' + yr + 'dd.length : ' + dd.length);
+  console.log('year : ' + yr);
 
   return yr + (mm.toString().length == 2 ? mm : '0'+mm) + (dd.toString().length == 2 ? dd : '0'+dd);
   // return [yr, !mm[1] && '0', mm, !dd[1] && '0', dd].join('');
@@ -69,13 +123,10 @@ Date.prototype.yymmdd = function() {
 
 module.exports = {
   getDailyBoxOffice: function() {
-    
-  },
-  getDailyBoxOfficeOrg: function () {
     var host = 'www.kobis.or.kr';
     var today = new Date();
     console.log('today is ' + today.yymmdd());
-    performRequest(host, '/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', 
+    return performRequest(host, '/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', 
       'GET', 
       {
         key : apiKey,
@@ -83,9 +134,23 @@ module.exports = {
       }, function(data) {
         console.log('Fetched ' + data);
         //prettify(data);
-        return data;
-    });
+    });    
   },
+  // getDailyBoxOfficeOrg: function () {
+  //   var host = 'www.kobis.or.kr';
+  //   var today = new Date();
+  //   console.log('today is ' + today.yymmdd());
+  //   performRequest(host, '/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json', 
+  //     'GET', 
+  //     {
+  //       key : apiKey,
+  //       targetDt : today.yymmdd()
+  //     }, function(data) {
+  //       console.log('Fetched ' + data);
+  //       //prettify(data);
+  //       return data;
+  //   });
+  // },
 
   getMovieInfoByName: function (name) {
     var host = 'apis.daum.net';
