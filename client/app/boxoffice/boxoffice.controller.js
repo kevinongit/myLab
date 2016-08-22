@@ -6,7 +6,8 @@ class BoxofficeComponent {
     constructor($http, $scope, socket) {
       this.$http = $http;
       this.socket = socket;
-      this.boxofficeList = {};
+      this.overall = {};
+      this.boxofficeList = [];
 
       $scope.$on('$destroy', function() {
         socket.unsyncUpdates('thing');
@@ -20,9 +21,11 @@ class BoxofficeComponent {
           console.log('hello');
 
           console.log('response.data = ' + response.data);
-          this.boxofficeList = {};
-          this.boxofficeList = response.data;
-          console.log('boxofficeType : ' + response.data.boxOfficeResult.boxofficeType);
+          
+          this.overall = response.data.boxOfficeResult;
+          this.boxofficeList = this.overall.dailyBoxOfficeList;
+          console.log('boxofficeType : ' + this.overall.boxofficeType);
+          console.log('this.boxofficeList.boxOfficeResult.boxofficeType : ' + this.overall.boxofficeType);
           
           // this.socket.syncUpdates('thing', this.boxofficeList);
         })

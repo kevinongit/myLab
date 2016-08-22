@@ -1,4 +1,12 @@
 <div>This is the boxoffice view.</div>
-<h1> {{ $ctrl.message }}</h1>
-<h1> {{ boxofficeCtrl.aa }}</h1>
-<h1> This.boxofficeList : {{ $ctrl.boxofficeList.boxOfficeResult.boxofficeType }} </h1>
+<h1> {{ $ctrl.overall.boxofficeType }}</h1>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">{{ boxofficeCtrl.overall.boxofficeType }} ( {{boxofficeCtrl.overall.showRange}}) </h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="item in boxofficeCtrl.boxofficeList">
+        <li><a href="#" uib-tooltip="some">{{item.rank}}, {{item.movieNm}} <button type="button" class="close" ng-click="$ctrl.deleteThing()">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
