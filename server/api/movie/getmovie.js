@@ -155,16 +155,15 @@ module.exports = {
   getMovieInfoByName: function (name) {
     var host = 'apis.daum.net';
     var daumKey = '1897b74982e1e8f01c2848ebe4a94cce';
-    performRequest(host, '/contents/movie', 
+    return performRequest(host, '/contents/movie', 
       'GET', 
       {
         apiKey : daumKey,
         q : name,
         output : 'json'
       }, function(data) {
-        // console.log('Fetched ' + data);
+        console.log('Fetched ' + data);
         prettify2(data);
-        return data;
     });
   },
 

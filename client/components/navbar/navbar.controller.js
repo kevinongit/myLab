@@ -9,7 +9,7 @@ class NavbarController {
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
     this.menu = [
-    				{'title' : 'BoxOffice', 'state' : 'boxoffice'},
+    				{'title' : 'Box Office', 'state' : 'boxoffice'},
     				{'title' : 'Search It', 'state' : 'SearchIt'}
     			];
   }

@@ -78,10 +78,14 @@ export function index(req, res) {
 
 // Gets a single Movie from the DB
 export function show(req, res) {
-  return Movie.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  console.log('show() req.params.id = ' + req.params.id);
+
+  getmovie.getMovieInfoByName(req.params.id).then(function(data) {
+    console.log('inside show - then');
+    getmovie.prettify2(data);
+    res.send(data);
+  })
+  .catch(handleError(res));
 }
 
 // Creates a new Movie in the DB
