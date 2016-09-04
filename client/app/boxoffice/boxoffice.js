@@ -10,10 +10,9 @@ angular.module('getmovieApp')
       })
       .state('boxoffice.detail', {
         url: '/detail/:name',
-        component: 'boxoffice.detail',
         resolve: {
         	name: function($stateParams) {
-        		console.log('name is ' + $stateParams.name);
+        		console.log('$stateParams.name is ' + $stateParams.name);
         		return $stateParams.name;
         	}
         },
@@ -24,8 +23,8 @@ angular.module('getmovieApp')
   	// 		this.boxofficeCtrl.getDetail(this.name);
 
   	// 	},
-        // template: '<boxoffice.detail></boxoffice.detail>'
-        templateUrl: 'app/boxoffice/boxoffice-detail.html'
+        template: '<boxoffice.detail></boxoffice.detail>'
+        // templateUrl: 'app/boxoffice/boxoffice-detail.html'
       })
       ;
   });

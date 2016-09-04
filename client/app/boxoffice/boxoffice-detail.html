@@ -1,0 +1,20 @@
+<div>Detail VIEW</div>
+<h1> {{ $ctrl.message }} </h1>
+<h1> {{ $ctrl.name }} </h1>
+<h1> 영화 상세 정보 (from daum) </h1>
+
+<ul>
+	<li> 영화 제목 : {{$ctrl.movie.title[0].content}} ({{$ctrl.movie.eng_title[0].content}}) </li>
+	<li> 제작 년도 : {{$ctrl.movie.year[0].content}} </li>
+	<li> 장르 : {{$ctrl.movie.genre[0].content}} </li>
+	<li> {{$ctrl.movie.story[0].content}} </li>
+	<img src="{{$ctrl.movie.thumbnail[0].content}}" />
+</ul>
+<!-- <ul  ng-repeat="item in $ctrl.channel.item">
+	<li> 영화 제목 : {{item.title[0].content}} ({{item.eng_title[0].content}}) </li>
+	<li> 제작 년도 : {{item.year[0].content}} </li>
+	<li> 장르 : {{item.genre[0].content}} </li>
+    <li> {{item.story[0].content}} </li>
+    <img src="{{item.thumbnail[0].content}}" />
+</ul> -->
+<h4> The End. </h4>
