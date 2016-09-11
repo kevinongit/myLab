@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>some Example</title>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+	<h4> Details (from daum) </h4>
+	<div class="row">
+		<div class="column">
+			<img width="50%" height="50%" src="http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F51782eac63ed645e5c6b72c7b395d688743650b6">
+		</div>
+		<div class="col-xs-">
+			<ul>
+				<li> 영화 제목 : {{$ctrl.movie.title[0].content}} ({{$ctrl.movie.eng_title[0].content}}) </li>
+				<li> 제작 년도 : {{$ctrl.movie.year[0].content}} </li>
+				<li> 장르 : {{$ctrl.movie.genre[0].content}} </li>
+				<li> {{$ctrl.movie.story[0].content}} </li>
+				<img src="{{$ctrl.movie.thumbnail[0].content}}" />
+			</ul>
+		</div>
+	</div>
+</div>
+
+</html>
