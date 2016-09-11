@@ -186,15 +186,17 @@ module.exports = {
     var channel = data.channel;
     console.log("-------------------------");
     
-    console.log("Title : " + channel.title);
+    console.log("+Title : " + channel.title);
     console.log("result : " + channel.result);
     console.log("query string : " + channel.q);
 
     var list = channel.item;
     
     for (var i=0; i < list.length; i++) {
-      console.log("Thumbnail : " + list[i].thumbnail[0].content);
+      console.log("+Thumbnail : " + list[i].thumbnail[0].content);
+      console.log("photo1 : " + list[i].photo1.content);      
       console.log("Story : " + list[i].story[0].content);
+
     }
 
     console.log("-------------------------");

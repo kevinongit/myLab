@@ -84,6 +84,7 @@ export function show(req, res) {
     console.log('inside show - then');
     getmovie.prettify2(data);
     res.send(data);
+    console.log('res sent!')
   })
   .catch(handleError(res));
 }
