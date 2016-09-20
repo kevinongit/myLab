@@ -10,3 +10,21 @@ ex) https://apis.daum.net/contents/movie?q="
 
 http://open.koreafilm.or.kr/
 nait/nait*9090
+
+// 유가정보
+http://www.knoc.co.kr/
+API Key : F050160913
+
+
+themoviedb.org (nait90/nait90, nait@nate.com)
+API Key : ddd9d004006ade13c9d13b30909b8786
+API Read Access Token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGQ5ZDAwNDAwNmFkZTEzYzlkMTNiMzA5MDliODc4NiIsInN1YiI6IjU3ZGJhOTcxYzNhMzY4MDc4YjAwNWFiNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b7UnIT0930NuqEQHI5eyNLGi6TAL9ShNOvHSZkkYjVY
+ex) https://api.themoviedb.org/3/movie/550?api_key=ddd9d004006ade13c9d13b30909b8786
+
+  profile path : 
+    jessica alba /yMiHrSyrv5u8qwfi3T8EuI4VPFk.jpg
+    http://image.tmdb.org/t/p/h632/yMiHrSyrv5u8qwfi3T8EuI4VPFk.jpg
+  procedure
+
+  movie info
+    http://api.themoviedb.org/3/movie/38002?api_key=ddd9d004006ade13c9d13b30909b8786&id=38002

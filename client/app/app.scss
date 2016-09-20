@@ -19,6 +19,9 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 /* inject:scss */
 @import 'admin/admin';
 @import 'boxoffice/boxoffice';
+@import 'getengphrase/getengphrase';
+@import 'getmoviequote/addmoviequote';
+@import 'getmoviequote/getmoviequote';
 @import 'main/main';
 @import '../components/footer/footer';
 @import '../components/modal/modal';

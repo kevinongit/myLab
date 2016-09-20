@@ -1,4 +1,4 @@
-
+﻿
 (2016/09/11)
   - basic git commands
     git commit .
@@ -15,3 +15,6 @@
   	  $git push origin master #push the re-established history
 
   - 'bower install' should be performed in root directory(/getmovie), or bunch of errors comes.
+
+(2016/09/16)
+  - IE caching problem : refer to FIX 20160916 in app.js (.config($httpProvider))

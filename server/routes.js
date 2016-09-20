@@ -9,7 +9,9 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/engphrases', require('./api/engphrase'));
   app.use('/api/movies', require('./api/movie'));
+  app.use('/api/moviequotes', require('./api/moviequote'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 

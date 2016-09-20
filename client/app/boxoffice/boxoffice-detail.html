@@ -1,34 +1,46 @@
-<div>Detail VIEW</div>
-<h1> {{ $ctrl.message }} </h1>
-<h1> {{ $ctrl.name }} </h1>
-<h1> 영화 상세 정보 (from daum) </h1>
+<div>
+	<h3> {{ $ctrl.message }} </h3>
+	<h3> {{ $ctrl.name }} </h3>
+	<h3> 영화 상세 정보 (from daum) </h3>
 
-<ul>
-	<li> 
-		<a ng-href="{{$ctrl.movie.title[0].link}}"> {{$ctrl.movie.title[0].content}} </a> 
-		({{$ctrl.movie.eng_title[0].content}}, {{$ctrl.movie.year[0].content}})
-	</li>
-	<li> <span ng-repeat="genre in $ctrl.movie.genre"> {{genre.content}} {{$last ? '' : ', '}} </span></li>
-	<li> {{$ctrl.movie.open_info[0].content}} 개봉 </li>
-	<li> {{$ctrl.movie.open_info[2].content}}, {{$ctrl.movie.open_info[1].content}} </li>
-	<li>  
-		<span ng-repeat="actor in $ctrl.movie.actor"> 
-			<a ng-href="{{actor.link}}"> {{actor.content}} </a> {{$last ? '' : ', '}} 
-		</span>
-	</li>
-	<li> 평점 : {{$ctrl.movie.grades[0].content}} </li>
-	<li> 스토리 : <br>
-		{{$ctrl.movie.story[0].content}} 
-	</li>
-	<li>
-		<img ng-src="{{$ctrl.movie.thumbnail[0].content}}" />
-		<br><br>
-		<img ng-src="{{$ctrl.movie.photo1.content}}" />
-		<img ng-src="{{$ctrl.movie.photo2.content}}" />
-		<img ng-src="{{$ctrl.movie.photo3.content}}" />
-		<img ng-src="{{$ctrl.movie.photo4.content}}" />
-		<img ng-src="{{$ctrl.movie.photo5.content}}" />
-	</li>
-</ul>
+	<ul>
+		<li> 
+			<a ng-href="{{$ctrl.movie.title[0].link}}"> {{$ctrl.movie.title[0].content}} </a> 
+			({{$ctrl.movie.eng_title[0].content}}, {{$ctrl.movie.year[0].content}})
+		</li>
+		<li> <span ng-repeat="genre in $ctrl.movie.genre"> {{genre.content}} {{$last ? '' : ', '}} </span></li>
+		<li> {{$ctrl.movie.open_info[0].content}} 개봉 </li>
+		<li> {{$ctrl.movie.open_info[2].content}}, {{$ctrl.movie.open_info[1].content}} </li>
+		<li>  
+			<span ng-repeat="actor in $ctrl.movie.actor"> 
+				<a ng-href="{{actor.link}}"> {{actor.content}} </a> {{$last ? '' : ', '}} 
+			</span>
+		</li>
+		<li> 평점 : {{$ctrl.movie.grades[0].content}} </li>
+		<li> 스토리 : <br>
+			{{$ctrl.movie.story[0].content}} 
+		</li>
+		<li>
+			<img ng-src="{{$ctrl.movie.thumbnail[0].content}}" />
+			<!-- <br><br> -->
+			<div style="height: 305px;width: 250px">
+			    <div uib-carousel active="active" interval="2000" no-wrap="noWrapSlides">
+			      <div uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
+			        <img ng-src="{{slide.image}}" style="margin:auto;">
+			        <div class="carousel-caption">
+			          <h4>Slide {{slide.id}}</h4>
+			          <p>{{slide.text}}</p>
+			        </div>
+			      </div>
+			    </div>
+			</div>
 
-<h4> The End. </h4>
+<!-- 			<img ng-src="{{$ctrl.movie.photo1.content}}" />
+			<img ng-src="{{$ctrl.movie.photo2.content}}" />
+			<img ng-src="{{$ctrl.movie.photo3.content}}" />
+			<img ng-src="{{$ctrl.movie.photo4.content}}" />
+			<img ng-src="{{$ctrl.movie.photo5.content}}" /> -->
+		</li>
+	</ul>
+
+</div>

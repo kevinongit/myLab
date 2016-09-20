@@ -1,0 +1,66 @@
+[
+	{
+		"movie" : "Now you see me",
+		"actor" : "Jesse Eisenberg",
+		"character" : "J. Daniel Atlas",
+		"phrase" : "First rule of magic: always the smartest person in the room.",
+		"desc" : "No Desc."
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Dave Franco",
+		"character" : "Jack Wilder",
+		"phrase" : "Oh no. Nothing, nothing's ever locked.",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Woody Harrelson",
+		"character" : "Merritt Mckinney",
+		"phrase" : "Without those qualities, magic as an art form would no longer exist.",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Jesse Eisenberg",
+		"character" : "J. Daniel Atlas",
+		"phrase" : "What is magic? Focused deception. But deception meant to entertain.",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Isla Fisher",
+		"character" : "Henley Reeves",
+		"phrase" : "But what happens if these qualities are not used for their higher purpose? And, instead they are used to cheat, lie.",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Jesse Eisenberg",
+		"character" : "J. Daniel Atlas",
+		"phrase" : "That's because you're looking too closely. And what have i been telling you all night? The closer you look..",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Jesse Eisenberg",
+		"character" : "J. Daniel Atlas",
+		"phrase" : "Like white on rice? Sorry, that's unfair. Let me warn you. I want you to follow, because no matter what you think you might know, we will always be one step, three steps, seven steps ahead of you, and just when you think you're catching up, that's when we'll be right behind you. And at no time will you be anywhere other than exactly where I want you to be. So come close, get all over me because the closer you think you are, the less you'll actually see.",
+		"desc" : "No desc"
+	},
+	{
+		"movie" : "Now you see me",
+		"actor" : "Morgan Freeman",
+		"character" : "Thaddeus Bradly",
+		"phrase" : "When a magician waves his hand and says, 'This is where the magic happening.' The real trick is happening somewhere else. Misdirection.",
+		"desc" : "No desc"
+	},
+
+	{
+		"movie" : "Now you see me",
+		"actor" : "Jesse Eisenberg",
+		"character" : "J. Daniel Atlas",
+		"phrase" : "",
+		"desc" : "No desc"
+	}
+]

@@ -36,7 +36,7 @@ class BoxofficeComponent {
     }
 
     getDetail(name) {
-    	console.log("getDetail : name is " + name);
+    	console.log('getDetail : name is' + name);
     	this.$http.get('/api/movies/' + name)
         .then(response => {
           console.log('hello');
@@ -49,38 +49,46 @@ class BoxofficeComponent {
         });
     }
 
-};
+}
 
 class MovieDetailComponent {
   constructor($http, $scope, socket,$stateParams) {
       this.$http = $http;
       this.channel = {};
       this.name = $stateParams.name;
+      this.slides = [];
       console.log('MovieDetailComponent:constructor:name : ', this.name);
   }
 
 	$onInit() {
 		console.log('MovieDetailComponent');
-    this.message = "Over There";
-    console.log("name ==> ", this.name);
+    this.message = 'Over There';
+    console.log('name ==> ', this.name);
     this.getDetail(this.name);
     console.log('END MovieDetailComponent');
 	}
 
   getDetail(name) {
-        console.log("getDetail : name is " + name);
+        console.log('getDetail : name is ' + name);
         this.$http.get('/api/movies/' + name)
           .then(response => {
             console.log('hello');
             this.channel = response.data.channel;
             this.movie = this.channel.item[0];
+            // build up slides out of scattered photo?
+            var index=0;
+            this.slides.push({'image': this.movie.photo1.content, 'text': this.movie.title[0].content, id: index++});
+            this.slides.push({'image': this.movie.photo2.content, 'text': this.movie.title[0].content, id: index++});
+            this.slides.push({'image': this.movie.photo3.content, 'text': this.movie.title[0].content, id: index++});
+            this.slides.push({'image': this.movie.photo4.content, 'text': this.movie.title[0].content, id: index++});
+            this.slides.push({'image': this.movie.photo5.content, 'text': this.movie.title[0].content, id: index++});
             console.log('this.movie.title[0].content = ' + this.movie.title[0].content);            
           })
           .catch(function(err) {
             console.log('err : ' + err);
           });
       }
-};
+}
 
 angular.module('getmovieApp')
   .component('boxoffice', {

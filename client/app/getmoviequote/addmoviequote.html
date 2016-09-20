@@ -1,0 +1,65 @@
+<!-- <md-dialog>
+  <h2> HERE </h2>
+</md-dialog> -->
+<div layout="column" flex="40" layout-padding ng-cloak>
+  <md-dialog aria-label="Add New Quote">
+    <p> CTRL : {{ $ctrl.msg }} , {{ msg }} </p>
+
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add New Quote</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+          <ng-md-icon icon="cancel" size="24" aria-label="Close dialog"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <form name="addMQForm" ng-cloak>
+      <md-dialog-content>
+        <div class="md-dialog-content">
+          <md-input-container class="md-block">
+            <label>Movie Title</label>
+            <md-icon ng-md-icon icon="movie" size="24"></md-icon>
+            <input md-maxlength="30" required md-no-asterisk name="movieName" ng-model="$ctrl.newItem.movieName">
+            <div ng-messages="addMQForm.movieName.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The title must be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div layout="row">
+            <md-input-container >
+              <label>Character Name</label>
+              <md-icon ng-md-icon icon="person" size="24"></md-icon>
+              <input required name="characterName" ng-model="$ctrl.newItem.characterName">
+              <div ng-messages="addMQForm.characterName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+
+          <md-input-container class="md-block">
+            <label>Quote here</label>
+            <md-icon ng-md-icon icon="chat" size="24"></md-icon>
+            <input required type="quote" name="quote" ng-model="$ctrl.newItem.quote"
+            minlength="10" maxlength="100" />
+
+            <div ng-messages="addMQForm.quote.$error" role="alert">
+              <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                New quote must be between 10 and 100 characters long.
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row">
+        <md-button type="submit" id="submit" ng-click="$ctrl.submit($ctrl.newItem)" md-autofocus>
+         Submit
+       </md-button>
+     </md-dialog-actions>
+   </form>
+ </md-dialog>
+</div>

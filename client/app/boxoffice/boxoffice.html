@@ -1,5 +1,5 @@
-<div>This is the boxoffice view.</div>
-<h1> {{ $ctrl.overall.boxofficeType }}</h1>
+
+  <!-- <h1> {{ $ctrl.overall.boxofficeType }}</h1>
 
   <div class="row">
     <div class="col-lg-12">
@@ -8,6 +8,49 @@
         <li><a ui-sref="boxoffice.detail({name: item.movieNm})" uib-tooltip="{{item.movieNm}}">{{item.rank}}, {{item.movieNm}} <button type="button" class="close" ng-click="$ctrl.getDetail(item.movieNm)">&times;</button></a></li>
       </ul>
     </div>
+  </div> -->
+
+
+
+
+<div ng-cloak layout-gt-sm="row" layout="column">
+
+  <div flex-gt-sm="30" flex>
+
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>{{ $ctrl.overall.boxofficeType }}</span>
+      </div>
+    </md-toolbar>
+
+    <md-content>
+      <md-list flex>
+        <md-subheader class="md-no-sticky"> movie box office : {{$ctrl.overall.showRange}} </md-subheader>
+        
+        <md-list-item ui-sref="boxoffice.detail({name: item.movieNm})" class="md-3-line" ng-repeat="item in $ctrl.boxofficeList" ng-click="null">
+          <img ng-src="assets/images/image2.jpg" class="md-avatar" alt="{{item.movieNm}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>순위 : {{ item.rank }}</h3>
+            <h4>제목 : {{ item.movieNm }}</h4>
+            <p>누적 관객 : {{ item.audiAcc |number }} 명</p>
+            <md-divider ></md-divider>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+  <div flex-gt-sm="70" flex>
+
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>세부정보</span>
+      </div>
+    </md-toolbar>
+    <md-content>
+    	<ui-view></ui-view>
+    </md-content>
   </div>
 
-<ui-view> </ui-view>
+</div>
+
+<!-- <ui-view> </ui-view> -->
